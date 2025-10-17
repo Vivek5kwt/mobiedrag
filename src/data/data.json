@@ -1,0 +1,70 @@
+{
+  "appConfig": {
+    "theme": {
+      "primaryColor": "#4F46E5",
+      "secondaryColor": "#F3F4F6",
+      "font": "Poppins",
+      "buttonRadius": 12
+    },
+    "navigation": [
+      { "name": "Home", "icon": "home-outline", "screen": "HomeScreen" },
+      { "name": "Products", "icon": "grid-outline", "screen": "ProductsScreen" },
+      { "name": "Cart", "icon": "cart-outline", "screen": "CartScreen" },
+      { "name": "Profile", "icon": "person-outline", "screen": "ProfileScreen" }
+    ]
+  },
+  "homeScreen": {
+    "banner": [
+      "https://picsum.photos/800/300?random=1",
+      "https://picsum.photos/800/300?random=2"
+    ],
+    "categories": [
+      { "id": 1, "name": "Electronics", "image": "https://picsum.photos/150/150?random=3" },
+      { "id": 2, "name": "Clothing", "image": "https://picsum.photos/150/150?random=4" },
+      { "id": 3, "name": "Books", "image": "https://picsum.photos/150/150?random=5" },
+      { "id": 4, "name": "Home Decor", "image": "https://picsum.photos/150/150?random=6" }
+    ]
+  },
+  "productScreen": {
+    "layout": "grid",
+    "products": [
+      {
+        "id": 1001,
+        "title": "Wireless Headphones",
+        "price": "₹2499",
+        "image": "https://picsum.photos/200/200?random=7",
+        "cartCount": 0
+      },
+      {
+        "id": 1002,
+        "title": "Casual Shirt",
+        "price": "₹999",
+        "image": "https://picsum.photos/200/200?random=8",
+        "cartCount": 0
+      },
+      {
+        "id": 1003,
+        "title": "Smart Watch",
+        "price": "₹3499",
+        "image": "https://picsum.photos/200/200?random=9",
+        "cartCount": 0
+      },
+      {
+        "id": 1004,
+        "title": "Sneakers",
+        "price": "₹1999",
+        "image": "https://picsum.photos/200/200?random=10",
+        "cartCount": 0
+      }
+    ]
+  },
+  "cart": [],
+  "profile": {
+    "name": "Harsh QA",
+    "email": "HarshQA@mobidrag.com",
+    "shopName": "Mobidrag Store",
+    "shopUrl": "https://mobidrag.com",
+    "avatar": "https://picsum.photos/100/100?random=11",
+    "location": "Chandigarh{Blaongi ,Khharar}, India"
+  }
+}
