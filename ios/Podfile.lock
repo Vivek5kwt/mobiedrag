@@ -2436,7 +2436,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNGestureHandler (2.28.0):
+  - RNGestureHandler (2.29.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2464,7 +2464,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNScreens (4.16.0):
+  - RNScreens (4.18.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2491,10 +2491,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNScreens/common (= 4.16.0)
+    - RNScreens/common (= 4.18.0)
     - SocketRocket
     - Yoga
-  - RNScreens/common (4.16.0):
+  - RNScreens/common (4.18.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2879,8 +2879,8 @@ SPEC CHECKSUMS:
   ReactCodegen: 1efedd581339e9ff5365e66fcf6522ae9f1be6cb
   ReactCommon: 17f21c8e189e290113e40fd8652758ec9694897b
   RNCAsyncStorage: 302f2fac014fd450046c120567ca364632da682b
-  RNGestureHandler: 310fefa1b72004d0b0a6a361b537a74724f45d5b
-  RNScreens: 74985ca8e102294a60cec7513fa84c936fa0b20b
+  RNGestureHandler: 4fd2c1c449479d982116e0336513fc0f2e4b4617
+  RNScreens: 3693ec4bbc0065151b843269e50e9807644e9918
   RNSnackbar: b0914bd060cdb82862dc1a987be57a8b918610bf
   RNVectorIcons: 6acc19c833be864e9c70894e101a587fe491150a
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748

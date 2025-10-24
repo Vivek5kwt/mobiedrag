@@ -1,70 +1,113 @@
 {
-  "appConfig": {
-    "theme": {
-      "primaryColor": "#4F46E5",
-      "secondaryColor": "#F3F4F6",
-      "font": "Poppins",
-      "buttonRadius": 12
+  "navigation": {
+    "type": "bottomTabs",
+    "initialTab": "home",
+    "tabs": [
+      { "key": "home", "label": "Home", "icon": "home", "screenId": "home_screen" },
+      { "key": "cart", "label": "Cart", "icon": "shopping-cart", "screenId": "cart_screen", "badge": 2 },
+      { "key": "favorites", "label": "Wishlist", "icon": "heart", "screenId": "wishlist_screen" },
+      { "key": "profile", "label": "Profile", "icon": "user", "screenId": "profile_screen" }
+    ]
+  },
+  "screens": [
+    {
+      "screenId": "home_screen",
+      "backgroundColor": "#F5F6F8",
+      "sections": [
+        {
+          "type": "header",
+          "props": {
+            "leftIcon": "menu",
+            "rightImage": "https://picsum.photos/id/1011/200"
+          }
+        },
+        {
+          "type": "textBlock",
+          "props": {
+            "text": "Hello Alex 👋\nGood Morning!"
+          }
+        },
+        {
+          "type": "searchBar",
+          "props": {
+            "placeholder": "Search",
+            "icon": "search"
+          }
+        },
+        {
+          "type": "categoryTabs",
+          "props": {
+            "activeTab": "All",
+            "tabs": [
+              { "label": "All" },
+              { "label": "Shoes" },
+              { "label": "T-Shirt" },
+              { "label": "Jeans" }
+            ]
+          }
+        },
+        {
+          "type": "productGrid",
+          "props": {
+            "columns": 2,
+            "products": [
+              {
+                "id": "p1",
+                "title": "Nike Air Max",
+                "image": "https://picsum.photos/id/237/250",
+                "price": "120",
+                "isFav": true,
+                "showAddButton": true
+              },
+              {
+                "id": "p2",
+                "title": "Adidas Running",
+                "image": "https://picsum.photos/id/238/250",
+                "price": "99",
+                "isFav": false,
+                "showAddButton": true
+              },
+              {
+                "id": "p3",
+                "title": "Casual T-Shirt",
+                "image": "https://picsum.photos/id/239/250",
+                "price": "30",
+                "isFav": true,
+                "showAddButton": true
+              },
+              {
+                "id": "p4",
+                "title": "Denim Jacket",
+                "image": "https://picsum.photos/id/240/250",
+                "price": "75",
+                "isFav": false,
+                "showAddButton": true
+              }
+            ]
+          }
+        }
+      ]
     },
-    "navigation": [
-      { "name": "Home", "icon": "home-outline", "screen": "HomeScreen" },
-      { "name": "Products", "icon": "grid-outline", "screen": "ProductsScreen" },
-      { "name": "Cart", "icon": "cart-outline", "screen": "CartScreen" },
-      { "name": "Profile", "icon": "person-outline", "screen": "ProfileScreen" }
-    ]
-  },
-  "homeScreen": {
-    "banner": [
-      "https://picsum.photos/800/300?random=1",
-      "https://picsum.photos/800/300?random=2"
-    ],
-    "categories": [
-      { "id": 1, "name": "Electronics", "image": "https://picsum.photos/150/150?random=3" },
-      { "id": 2, "name": "Clothing", "image": "https://picsum.photos/150/150?random=4" },
-      { "id": 3, "name": "Books", "image": "https://picsum.photos/150/150?random=5" },
-      { "id": 4, "name": "Home Decor", "image": "https://picsum.photos/150/150?random=6" }
-    ]
-  },
-  "productScreen": {
-    "layout": "grid",
-    "products": [
-      {
-        "id": 1001,
-        "title": "Wireless Headphones",
-        "price": "₹2499",
-        "image": "https://picsum.photos/200/200?random=7",
-        "cartCount": 0
-      },
-      {
-        "id": 1002,
-        "title": "Casual Shirt",
-        "price": "₹999",
-        "image": "https://picsum.photos/200/200?random=8",
-        "cartCount": 0
-      },
-      {
-        "id": 1003,
-        "title": "Smart Watch",
-        "price": "₹3499",
-        "image": "https://picsum.photos/200/200?random=9",
-        "cartCount": 0
-      },
-      {
-        "id": 1004,
-        "title": "Sneakers",
-        "price": "₹1999",
-        "image": "https://picsum.photos/200/200?random=10",
-        "cartCount": 0
-      }
-    ]
-  },
-  "cart": [],
-  "profile": {
-    "name": "Harsh QA",
-    "email": "HarshQA@mobidrag.com",
-    "shopName": "Mobidrag Store",
-    "shopUrl": "https://mobidrag.com",
-    "avatar": "https://picsum.photos/100/100?random=11",
-    "location": "Chandigarh{Blaongi ,Khharar}, India"
-  }
+    {
+      "screenId": "cart_screen",
+      "backgroundColor": "#FFFFFF",
+      "sections": [
+        { "type": "textBlock", "props": { "text": "Your Cart is Empty" } }
+      ]
+    },
+    {
+      "screenId": "wishlist_screen",
+      "backgroundColor": "#FFFFFF",
+      "sections": [
+        { "type": "textBlock", "props": { "text": "Wishlist Items" } }
+      ]
+    },
+    {
+      "screenId": "profile_screen",
+      "backgroundColor": "#FFFFFF",
+      "sections": [
+        { "type": "textBlock", "props": { "text": "User Profile" } }
+      ]
+    }
+  ]
 }

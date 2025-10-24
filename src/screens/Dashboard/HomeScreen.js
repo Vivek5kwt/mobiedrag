@@ -1,143 +1,48 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import data from '../../data/data.json'; // adjust path if needed
+import { View, Text, ScrollView, StatusBar } from 'react-native';
+import HeaderBar from '../../components/HeaderBar';
+import SearchBar from '../../components/SearchBar';
+import CategoryTabs from '../../components/CategoryTabs';
+import ProductGrid from '../Dashboard/ProductGrid';
+import ui from '../../data/data.json';
+import { wp, hp } from '../../utils/responsive';
+import SafeAreaWrapper from '../../components/SafeAreaWrapper'
 
-const HomeScreen = () => {
-  const navigation = useNavigation();
-  const profile = data.profile;
+export default function HomeScreen() {
+const home = ui.screens.find((s) => s.screenId === 'home_screen');
+const headerSection = home.sections.find((sec) => sec.type === 'header');
+const categorySection = home.sections.find((sec) => sec.type === 'categoryTabs');
+const productGridSection = home.sections.find((sec) => sec.type === 'productGrid');
 
-  return (
-    <ScrollView style={styles.container}>
-      {/* Banner Section */}
-      <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
-        {data.homeScreen.banner.map((bannerUrl, index) => (
-          <Image
-            key={index}
-            source={{ uri: bannerUrl }}
-            style={styles.banner}
-            resizeMode="cover"
-          />
-        ))}
-      </ScrollView>
 
-      {/* Profile Section */}
-      <View style={styles.profileContainer}>
-        <Image source={{ uri: profile.avatar }} style={styles.avatar} />
-        <View style={styles.profileDetails}>
-          <Text style={styles.name}>{profile.name}</Text>
-          <Text style={styles.email}>{profile.email}</Text>
-          <Text style={styles.shopName}>{profile.shopName}</Text>
-          <Text style={styles.shopUrl}>{profile.shopUrl}</Text>
-          <Text style={styles.location}>{profile.location}</Text>
-        </View>
-      </View>
+return (
+    <SafeAreaWrapper backgroundColor="#f8f8f8" barStyle="dark-content">
+<View style={{ flex: 1,backgroundColor: home.backgroundColor }}>
+<StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
+<ScrollView showsVerticalScrollIndicator={false}>
+<HeaderBar leftIcon={headerSection.props.leftIcon} rightImage={headerSection.props.rightImage} />
+<View style={{ paddingHorizontal: wp(4), marginTop: hp(2) }}>
+<Text style={{ fontSize: wp(6), fontWeight: '700' }}>{home.sections[1].props.text.split('\n')[0]}</Text>
+<Text style={{ fontSize: wp(5), fontWeight: '700', marginTop: hp(0.5) }}>{home.sections[1].props.text.split('\n')[1]}</Text>
+</View>
 
-      {/* Categories */}
-      <View style={styles.categoryContainer}>
-        <Text style={styles.sectionTitle}>Categories</Text>
-        <View style={styles.categoryGrid}>
-          {data.homeScreen.categories.map((cat) => (
-            <TouchableOpacity
-              key={cat.id}
-              style={styles.categoryItem}
-              onPress={() => navigation.navigate('Products', { category: cat.name })}
-              activeOpacity={0.8}
-            >
-              <Image source={{ uri: cat.image }} style={styles.categoryImage} />
-              <Text style={styles.categoryName}>{cat.name}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </View>
-    </ScrollView>
-  );
-};
 
-export default HomeScreen;
+<SearchBar placeholder={home.sections.find((s) => s.type === 'searchBar').props.placeholder} />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F3F4F6',
-  },
-  banner: {
-    width: 400,
-    height: 200,
-    borderRadius: 12,
-    margin: 10,
-  },
-  profileContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: 15,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 10,
-    elevation: 3,
-  },
-  avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-  },
-  profileDetails: {
-    marginLeft: 15,
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#4F46E5',
-  },
-  email: {
-    fontSize: 14,
-    color: '#555',
-  },
-  shopName: {
-    fontSize: 16,
-    color: '#333',
-    marginTop: 5,
-  },
-  shopUrl: {
-    fontSize: 14,
-    color: '#1E90FF',
-  },
-  location: {
-    fontSize: 14,
-    color: '#777',
-  },
-  categoryContainer: {
-    marginTop: 20,
-    paddingHorizontal: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#111',
-    marginBottom: 10,
-  },
-  categoryGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  categoryItem: {
-    width: '47%',
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 10,
-    alignItems: 'center',
-    marginBottom: 10,
-    elevation: 3,
-  },
-  categoryImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 12,
-  },
-  categoryName: {
-    marginTop: 8,
-    fontSize: 14,
-    fontWeight: '500',
-  },
-});
+
+<CategoryTabs tabs={categorySection.props.tabs} activeTab={categorySection.props.activeTab} />
+
+
+<View style={{ paddingHorizontal: wp(4), marginTop: hp(2) }}>
+<Text style={{ fontSize: wp(5), fontWeight: '700', marginBottom: hp(1) }}>Popular</Text>
+</View>
+
+
+<ProductGrid products={productGridSection.props.products} columns={productGridSection.props.columns} />
+
+
+</ScrollView>
+</View>
+</SafeAreaWrapper>
+);
+}
