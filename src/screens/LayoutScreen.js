@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { RefreshControl } from "react-native";
 import {
   ScrollView,
   Text,
@@ -16,6 +17,23 @@ export default function LayoutScreen() {
   const [dsl, setDsl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+
+  const refreshDSL = async () => {
+    try {
+      const dslData = await fetchDSL();
+      setDsl(dslData);
+    } catch (e) {
+      console.log("❌ Refresh error:", e);
+    }
+  };
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refreshDSL();   // DSL reload
+    setRefreshing(false);
+  };
+  
 
   const loadDSL = async () => {
     try {
@@ -107,7 +125,12 @@ export default function LayoutScreen() {
           </TouchableOpacity>
         </View>
 
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView
+          style={{ flex: 1 }}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
           {dsl.sections?.map((s, i) => (
             <DynamicRenderer key={i} section={s} />
           ))}
