@@ -23,4 +23,4 @@ if (Platform.OS === 'ios') {
   };
 }
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent('MobiDrag', () => App);
